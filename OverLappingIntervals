@@ -1,0 +1,26 @@
+'''
+Created on Jan 14, 2015
+
+@author: SarangPC
+'''
+
+
+def overlaps(intervals):
+    es = []
+    for a, b in intervals:
+        es.append((a, -1))
+        es.append((b, 1))
+    es.sort()
+    print(es)
+    result = 0
+    n = 0
+    for a, s in es:
+        if s == -1: result += n
+        n -= s
+    return result
+
+intervals=[(1,4),(3,7),(5,8),(14,17),(0,2),(11,14)]
+print(overlaps(intervals))
+
+if __name__ == '__main__':
+    pass
