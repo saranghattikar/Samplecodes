@@ -1,0 +1,43 @@
+'''
+Created on Jan 21, 2015
+
+@author: SarangPC
+'''
+
+def permutations(word):
+    if len(word)<=1:
+        return [word]
+
+    #get all permutations of length N-1
+    perms=permutations(word[1:])
+    char=word[0]
+    result=[]
+    #iterate over all permutations of length N-1
+    for perm in perms:
+        #insert the character into every possible location
+        for i in range(len(perm)+1):
+            result.append(perm[:i] + char + perm[i:])
+    return result
+
+
+#===============================================================================
+# The algorithm is:
+# 
+# Remove the first letter
+# Find all the permutations of the remaining letters (recursive step)
+# Reinsert the letter that was removed in every possible location.
+# The base case for the recursion is a single letter. There is only one way to permute a single letter.
+# 
+# Worked example
+# 
+# Imagine the start word is bar.
+# 
+# First remove the b.
+# Find the permuatations of ar. This gives ar and ra.
+# For each of those words, put the b in every location:
+# ar -> bar, abr, arb
+# ra -> bra, rba, rab
+#===============================================================================
+
+if __name__ == '__main__':
+    pass
